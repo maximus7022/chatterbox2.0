@@ -15,24 +15,19 @@ pipeline  {
         stage("Removing old images") {
             steps {
                 echo 'Removing images ...'
-                dir('.'){
-                    sh "docker rmi maximus7022/chat_node maximus7022/chat_nginx"
+                dir('/home/ubuntu/chatter/chatterbox'){
+                    sh "docker-compose down"
+                    sh "docker rmi chatterbox_node chatterbox_nginx"
                 }
             }
         }
-        stage("Create docker image with node") {
+        stage("Creating images") {
             steps {
                 echo 'Creating docker image ...'
-                dir('.'){
-                    sh "docker build -t maximus7022/chat_node . "
-                }
-            }
-        }
-        stage("Create docker image with nginx") {
-            steps {
-                echo 'Creating docker image ...'
-                dir('.'){
-                    sh "docker build -t maximus7022/chat_nginx nginx/ "
+                dir('/home/ubuntu/chatter/chatterbox'){
+                    sh "docker-compose up -d"
+                    sh "docker tag chatterbox_node maximus7022/chatterbox_node"
+                    sh "docker tag chatterbox_nginx maximus7022/chatterbox_nginx"
                 }
             }
         }
@@ -50,7 +45,7 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push maximus7022/chat_node:latest
+                docker push maximus7022/chatterbox_node:latest
                 '''
             }
         }
@@ -59,20 +54,11 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push maximus7022/chat_nginx:latest
+                docker push maximus7022/chatterbox_nginx:latest
                 '''
             }
         }
         
-        // stage("Deploy to stage server") {
-        //     steps {
-        //         echo " ============== Running playbook =================="
-        //         sh '''
-        //         ansible-playbook toolbox/ansible/playbooks/demloyToStageServer.yml
-        //         '''
-        //     }
-        //}
-
     }
 
 }
