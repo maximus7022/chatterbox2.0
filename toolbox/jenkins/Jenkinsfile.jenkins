@@ -17,7 +17,7 @@ pipeline  {
                 echo 'Removing images ...'
                 dir('/home/ubuntu/chatter/chatterbox'){
                     sh "docker-compose down"
-                    sh "docker rmi maximus7022/chatterbox_node maximus7022/chatterbox_nginx"
+                    sh "docker rmi maximus7022/chatterbox_node maximus7022/chatterbox_nginx chatterbox_node chatterbox_nginx"
                 }
             }
         }
