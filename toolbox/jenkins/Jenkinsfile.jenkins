@@ -1,0 +1,78 @@
+#!groovy
+//  groovy Jenkinsfile
+properties([disableConcurrentBuilds()])
+
+pipeline  {
+    
+    agent { 
+        label 'master'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("Removing old images") {
+            steps {
+                echo 'Removing images ...'
+                dir('.'){
+                    sh "docker rmi maximus7022/chat_node maximus7022/chat_nginx"
+                }
+            }
+        }
+        stage("Create docker image with node") {
+            steps {
+                echo 'Creating docker image ...'
+                dir('.'){
+                    sh "docker build -t maximus7022/chat_node . "
+                }
+            }
+        }
+        stage("Create docker image with nginx") {
+            steps {
+                echo 'Creating docker image ...'
+                dir('.'){
+                    sh "docker build -t maximus7022/chat_nginx nginx/ "
+                }
+            }
+        }
+        stage("docker login") {
+            steps {
+                echo " ============== docker login =================="
+                withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                    docker login -u $USERNAME -p $PASSWORD
+                    '''
+                }
+            }
+        }
+        stage("docker push node") {
+            steps {
+                echo " ============== pushing image =================="
+                sh '''
+                docker push maximus7022/chat_node:latest
+                '''
+            }
+        }
+        
+        stage("docker push nginx") {
+            steps {
+                echo " ============== pushing image =================="
+                sh '''
+                docker push maximus7022/chat_nginx:latest
+                '''
+            }
+        }
+        
+        // stage("Deploy to stage server") {
+        //     steps {
+        //         echo " ============== Running playbook =================="
+        //         sh '''
+        //         ansible-playbook toolbox/ansible/playbooks/demloyToStageServer.yml
+        //         '''
+        //     }
+        //}
+
+    }
+
+}

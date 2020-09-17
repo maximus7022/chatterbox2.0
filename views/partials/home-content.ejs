@@ -1,0 +1,208 @@
+<main>
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row main-content-block">
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12">
+          <div class="scroll">
+            <div class="icon-bar">
+              <div>
+                <a href="#" class="side-menu"
+                  ><i class="fas fa-align-justify"></i
+                ></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+                <a href="#"
+                  ><img src="img/User_Avatar.png" alt="user_avatar"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-10 col-lg-10 col-md-9">
+          <div class="index-body">
+            <section class="search-input">
+              <div class="search-block">
+                <form class="search-form">
+                  <input type="txt" placeholder=" Search.." />
+                  <button type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </div>
+            </section>
+            <section class="content-adress-block">
+              <div class="addressee-block">
+                <div class="addressee-content">
+                  <img src="img/User_Avatar.png" alt="user_avatar" />
+                  <p>Name Surname</p>
+                  <div class="online-checkbox">
+                    <div class="online-checkbox-back">
+                      <div class="online-checkbox-front"></div>
+                    </div>
+                    <p>online</p>
+                  </div>
+
+                  <!-- start. block deletion of messages -->
+                  <div class="delete-messages-block">
+                    <div class="delete-messages-button">
+                      <button class="btn-delete" type="button">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div class="check-all-messages">
+                      <label class="container-check-all">
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <!-- end. block deletion of messages -->
+                </div>
+              </div>
+            </section>
+            <section class="content-message-block">
+              <div class="messages-block">
+                <div class="content-messages">
+                  <div class="col-md-9">
+                    <div class="card">
+                      <form action="/results" method="post">
+                          <div class="content">
+                              <p class="filter">
+                                  FILTER
+                              </p>
+                              <hr/>
+                              <select class="form-control" name="country" id="country" >
+                                  <option value="">Filter By 
+                                    Group
+                                  </option>
+                                  <% _.forEach(descriptions, function(value) { %>
+                                      <option value="<%= value._id %>"><%= value._id %></option>
+                                  <% }) %>
+                              </select>
+                              <div class="clearfix"></div>
+                              <button class="btn add-apply">Apply</button>
+                          </div>
+                      </form>
+                  </div>
+                    <div>
+                       <% _.forEach(chunks, function(val) { console.log("Chunks ", chunks) %>
+                        <div class="category-list">
+                            <div class="row">
+                               <% _.forEach(val, function(val2) { %>
+                                <form action="/home" method="post" id="favorite">
+                                    <div class="item col-md-4">
+                                      <a style="text-decoration:none" href="/group/<%= val2.name.replace(/ /g, "-") %>">
+                                        <div class="thumbnail">
+                                           <img src="http://localhost:3200/uploads/<%= val2.image %>" alt="">
+                                            <div class="caption">
+                                                <h4>
+                                                    <%= val2.name %> (<%= val2.members.length %>)
+                                                </h4>
+                                                
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <p>
+                                                            <%= val2.description %>
+                                                        </p>
+                                                    </div>
+                                                    
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <input type="hidden" name="id" id="id" value="<%= val2._id %>">
+                                                        <input type="hidden" name="groupName" id="group_Name" value="<%= val2.name %>">
+                                                        <button class="btn add-fav">
+                                                            Add To Favorite
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </form>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+              </div>
+            </section>
+            <section class="content-input-form">
+              <div class="input-messages">
+                <div class="input-content-microfone">
+                  <button class="microphone content-btn" type="submit">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                </div>
+
+                <div class="send-message">
+                  <form class="messages-form">
+                    <input type="txt" placeholder=" Write a message..." />
+                    <button type="submit" class="content-btn">
+                      <i class="fas fa-paperclip"></i>
+                    </button>
+                  </form>
+                </div>
+                <button type="submit" class="btn-type-one btn-send-content">
+                  Send
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

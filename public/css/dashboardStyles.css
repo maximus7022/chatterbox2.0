@@ -1,0 +1,164 @@
+.input-container-dashboard input{
+    width: 600px;
+    border-radius: 5px;
+}
+
+.input-container-dashboard{
+    margin: 30px;
+}
+
+.linkToHome {
+    display: flex;
+    justify-content: center;
+}
+
+.linkToHome a{
+    color: white;
+    text-decoration: none;
+}
+
+.linkToHome a:hover{
+    color: silver;
+}
+
+.btn-dashboard{
+    display: flex;
+    width: 600px;
+}
+
+/* Custom select */
+
+.test{
+    display: flex;
+    justify-content: center;
+}
+
+.custom-select {
+    width: 600px;
+    
+    position: relative;
+    font-family: Arial;
+    
+  }
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+    
+  }
+  
+  .select-selected {
+    background-color: #273142;
+    border-radius: 5px;
+  }
+  
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  
+  /*point the arrow upwards when the select box is open (active):*/
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: #222c3c;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Choose a file */
+  /* Global style */
+
+  .btn-tertiary {
+    border-radius: 5px;
+    color: silver;
+    padding: 0;
+    line-height: 40px;
+    width: 600px;
+    margin: 30px;
+    display: block;
+    border: 2px solid silver;
+
+  }
+  .btn-tertiary:hover, .btn-tertiary:focus{
+    color: silver;
+    border-color: silver;
+  }
+  
+  /* input file style */
+  
+  .input-file {
+    display: flex;
+    justify-content: center;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+  }
+
+  .input-file + .js-labelFile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+
+  .input-file + .js-labelFile .icon:before{
+    content: "\f093";
+  }
+
+  .input-file + .js-labelFile.has-file .icon:before {
+        content: "\f00c";
+        color: #5AAC7B;
+    }
+
+@media screen and (max-width: 992px){
+    .input-container-dashboard input, .btn-dashboard, .custom-select, .btn-tertiary {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .input-container-dashboard input, .btn-dashboard, .custom-select, .btn-tertiary {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 568px){
+    .input-container-dashboard input, .btn-dashboard, .custom-select, .btn-tertiary {
+        width: 250px;
+    }
+}

@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="linkToHome">
+          <h2>
+            <a href="/home">← Back to home</a>
+          </h2>
+        </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 register-form">
+
+        <form action="/dashboard" method="POST" class="">
+          
+          <div class="input-container-dashboard">
+            <input
+            class="inp inp-dashboard" type="text" name="group" placeholder="Group Name"
+            />
+          </div>
+          <div class="input-container-dashboard">
+            <input
+            class="inp inp-dashboard" type="text" name="description" placeholder="Description"
+            />
+          </div>
+          <!-- <input class="inp inp-dashboard" type="text" name="group" placeholder="Group Name" />
+          <input class="inp inp-dashboard" type="text" name="description" placeholder="Description" /> -->
+      
+          <div class="test">
+            <div class="custom-select">
+              <select>
+                <option value="0">Select category:</option>
+                <option value="1">Programming</option>
+                <option value="2">DevOps</option>
+                <option value="3">Design</option>
+              </select>
+            </div>
+          </div>
+          <!-- <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+          <input type="file" name="upload" id="upload-input"/> -->
+      
+          <input type="file" name="upload" id="upload-input" class="input-file">
+          <label for="upload-input" class="btn btn-tertiary js-labelFile">
+            <i class="icon fa fa-check"></i>
+            <span class="js-fileName">Choose a file</span>
+          </label>
+
+          <div class="test">
+            <button type="submit " class="btn-type-two btn btn-dashboard">Create Group</button>
+          </div>
+        </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,58 @@
+<main>
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 login-form"
+        >
+          <form action="/" method="post" class="form-group">
+            <% if(hasErrors) {%> <% _.forEach(messages, function(error){ %>
+
+              <div id="my-alert" class="alert alert-message d-flex rounded p-0" role="alert">
+                <div class="alert-icon d-flex justify-content-center align-items-center flex-grow-0 flex-shrink-0 py-3">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="d-flex align-items-center ">
+                   <%= error %>
+                </div>
+                <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <% }) %> <% } %>
+
+
+            <div class="input-container">
+              <i class="far fa-envelope icon"></i>
+              <input
+                type="email"
+                name="email"
+                class="inp"
+                placeholder="Email"
+              />
+            </div>
+            <div class="input-container">
+              <i class="fas fa-lock icon"></i>
+              <input
+                type="password"
+                name="password"
+                class="inp"
+                placeholder="Password"
+              />
+            </div>
+            <button type="submit" class="btn-type-two btn">Login</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row login-links-block">
+        <div class="login-links col-md-12">
+          <a href="/forgot">Forgot password?</a>
+        </div>
+        <div class="login-links col-md-12">
+          <a href="/register">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
