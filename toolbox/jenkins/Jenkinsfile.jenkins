@@ -26,6 +26,8 @@ pipeline  {
                 echo 'Creating docker image ...'
                 dir('/home/ubuntu/chatter/chatterbox'){
                     sh "docker-compose up -d"
+                    sh "docker tag chatterbox_node maximus7022/chatterbox_node"
+                    sh "docker tag chatterbox_nginx maximus7022/chatterbox_nginx"
                 }
             }
         }
