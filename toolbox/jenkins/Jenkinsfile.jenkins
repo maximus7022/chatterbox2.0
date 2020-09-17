@@ -15,7 +15,7 @@ pipeline  {
         stage("Removing old images") {
             steps {
                 echo 'Removing images ...'
-                dir('.'){
+                dir('/home/ubuntu/chatter/chatterbox'){
                     sh "docker-compose down"
                     sh "docker rmi chatterbox_node chatterbox_nginx"
                 }
@@ -24,7 +24,7 @@ pipeline  {
         stage("Creating images") {
             steps {
                 echo 'Creating docker image ...'
-                dir('.'){
+                dir('/home/ubuntu/chatter/chatterbox'){
                     sh "docker-compose up -d"
                 }
             }
