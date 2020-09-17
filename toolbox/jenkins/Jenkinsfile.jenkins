@@ -43,7 +43,7 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push chatterbox_node
+                docker push maximus7022/chatterbox_node
                 '''
             }
         }
@@ -52,7 +52,7 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push chatterbox_nginx
+                docker push maximus7022/chatterbox_nginx
                 '''
             }
         }
